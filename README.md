@@ -6,20 +6,18 @@
 
 ```
 .
-├── README.md                                  ← 你正在读这个
-├── 餐厅预订小程序 Prd V0 1.pdf                 ← 产品需求文档（PRD v0.1）
-├── ChatGPT Image ... (1~6).png                ← 6 张原始 UI 设计参考图
-└── booking-app/                               ← Demo 代码（React + Vite）
-    ├── README.md                              ← 本地开发与部署说明
+├── README.md                          ← 你正在读这个
+└── booking-app/                       ← Demo 代码（React + Vite）
+    ├── README.md                      ← 本地开发与部署说明
     ├── package.json
     ├── src/
-    │   ├── pages/                             ← 16 个用户端页面
+    │   ├── pages/                     ← 16 个用户端页面
     │   ├── components/
-    │   │   └── FloorPlan.jsx                  ← SVG 平面图选座
+    │   │   └── FloorPlan.jsx          ← SVG 平面图选座
     │   ├── data/
-    │   │   ├── mock.js                        ← 餐厅 / 订单 / 用户 mock
-    │   │   ├── images.js                      ← Unsplash 图片资源
-    │   │   └── cancelStore.js                 ← 取消订单月度限额
+    │   │   ├── mock.js                ← 餐厅 / 订单 / 用户 mock
+    │   │   ├── images.js              ← Unsplash 图片资源
+    │   │   └── cancelStore.js         ← 取消订单月度限额
     │   └── styles/global.css
     └── index.html
 ```
