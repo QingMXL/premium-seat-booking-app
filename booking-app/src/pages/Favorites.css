@@ -1,0 +1,53 @@
+.fav-tabs {
+  display: flex; gap: 18px; padding: 6px 16px 12px;
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-line);
+}
+.fav-tab {
+  font-size: 14px;
+  color: var(--c-text-3);
+  position: relative;
+  padding-bottom: 6px;
+}
+.fav-tab.on {
+  color: var(--c-text);
+  font-weight: 700;
+}
+.fav-tab.on::after {
+  content: ''; position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 18px; height: 3px; background: var(--c-gold);
+  border-radius: 2px;
+}
+
+.fav-scroll { background: var(--c-bg); padding: 12px 0; }
+
+.fav-dishes { padding: 0 14px; }
+.fav-dish {
+  display: flex; gap: 12px; align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-card);
+}
+.fav-d-img {
+  width: 88px; height: 88px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fav-d-info { flex: 1; }
+.fav-count {
+  background: var(--c-bg-2);
+  color: var(--c-text-3);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-left: 4px;
+  font-weight: 500;
+}
+.fav-d-name { font-size: 14px; font-weight: 700; }
+.fav-d-rest { font-size: 11px; color: var(--c-text-3); margin-top: 4px; }
+.fav-d-price { font-size: 14px; color: var(--c-warn); margin-top: 6px; font-weight: 700; }
+.fav-d-heart { color: var(--c-warn); font-size: 20px; }

@@ -1,0 +1,24 @@
+.phone-scroll { background: var(--c-bg); padding-top: 12px; }
+.phone-card {
+  background: #fff;
+  border-radius: 12px;
+  margin: 0 14px;
+  padding: 0 14px;
+  box-shadow: var(--shadow-card);
+}
+.phone-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 13px;
+}
+.phone-row:last-child { border-bottom: none; }
+.phone-row span { color: var(--c-text-3); }
+.phone-row b { font-weight: 600; color: var(--c-text); }
+
+.phone-tip {
+  margin: 16px 14px 0;
+  font-size: 11px;
+  color: var(--c-text-3);
+  line-height: 1.6;
+}

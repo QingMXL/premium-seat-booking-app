@@ -1,0 +1,190 @@
+.home-header {
+  background: var(--c-bg);
+  flex-shrink: 0;
+  padding-bottom: 6px;
+}
+
+.home-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 8px;
+}
+.home-topbar .city {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.home-topbar .city .caret { font-size: 10px; color: var(--c-text-3); }
+.home-topbar .search-box {
+  flex: 1;
+  height: 36px;
+  background: #fff;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--c-text-3);
+  gap: 6px;
+  border: 1px solid var(--c-line);
+}
+.home-topbar .search-box .search-icon {
+  color: var(--c-text-3); font-size: 14px;
+}
+.home-topbar .msg-icon {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--c-text);
+}
+
+.banner {
+  position: relative;
+  margin: 4px 14px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 200px;
+  box-shadow: 0 10px 30px rgba(82, 56, 18, 0.18);
+}
+.banner-img-wrap {
+  position: absolute; inset: 0;
+  filter: blur(1.5px) brightness(0.85) saturate(1.15);
+  transform: scale(1.06);  /* 避免 blur 边缘 */
+}
+.banner-img-wrap .smart-img { height: 100%; }
+.banner-vignette {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+}
+.banner-mask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+.banner-en {
+  font-family: var(--f-display);
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--c-gold-soft);
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+.banner-deco {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--c-gold-soft);
+}
+.banner-deco .deco-line {
+  width: 30px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-gold-soft), transparent);
+}
+.banner-deco .deco-dot {
+  font-size: 10px;
+}
+.banner-title {
+  font-family: var(--f-serif);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #fff;
+  text-shadow:
+    0 2px 12px rgba(0,0,0,0.6),
+    0 0 1px rgba(226, 201, 142, 0.5);
+  margin: 8px 0 4px;
+  padding-left: 6px;       /* 补偿 letter-spacing 视觉居中 */
+  background: linear-gradient(180deg, #fff 0%, #F2E3BD 50%, #C8A55C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.banner-subtitle {
+  font-family: var(--f-serif);
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  margin-bottom: 10px;
+}
+.banner-tags {
+  display: flex; gap: 10px;
+  font-family: var(--f-serif);
+  font-size: 10px;
+  color: var(--c-gold-soft);
+  letter-spacing: 2px;
+}
+.banner-tags .sep { color: rgba(226, 201, 142, 0.5); }
+
+.quick-scroll {
+  display: flex;
+  gap: 8px;
+  padding: 14px 14px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.quick-scroll::-webkit-scrollbar { display: none; }
+
+.home-scroll {
+  background: var(--c-bg);
+}
+
+.scenes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 16px;
+}
+.scene {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.scene-cover {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+.scene-mask {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.6) 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex; align-items: flex-end; padding: 8px 10px;
+  letter-spacing: 1px;
+}
+.scene-meta { padding: 8px 10px 10px; }
+.scene-name { font-size: 13px; font-weight: 700; color: var(--c-text); }
+.scene-desc { font-size: 11px; color: var(--c-text-3); margin-top: 2px; }
+
+.section-title .count {
+  font-size: 11px;
+  color: var(--c-text-3);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.empty {
+  background: #fff;
+  margin: 0 16px;
+  border-radius: 14px;
+  padding: 40px 20px 30px;
+  text-align: center;
+}
+.empty-icon { font-size: 32px; color: var(--c-text-4); }
+.empty-text { font-size: 13px; color: var(--c-text-3); margin: 8px 0 16px; }
+.empty .btn-outline { margin: 0 auto; }
+
+.banner .smart-img {
+  height: 100%;
+}

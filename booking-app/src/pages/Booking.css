@@ -1,0 +1,207 @@
+.booking-scroll {
+  background: var(--c-bg);
+  padding: 0 14px 0;
+}
+
+.bk-step-title {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+  padding: 16px 2px 8px;
+}
+.bk-step-extra {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--c-text-3);
+}
+
+.bk-restaurant {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-card);
+}
+.bk-r-cover {
+  width: 56px; height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.bk-r-info { flex: 1; min-width: 0; }
+.bk-r-name {
+  font-size: 14px; font-weight: 700; color: var(--c-text);
+  display: flex; align-items: center;
+}
+.bk-r-meta {
+  font-size: 11px; color: var(--c-text-3); margin-top: 4px;
+}
+.bk-r-change {
+  font-size: 11px; color: var(--c-primary);
+}
+
+.bk-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.bk-date {
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  padding: 8px 0;
+  position: relative;
+  border: 1px solid transparent;
+}
+.bk-date.on {
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+}
+.bk-date.on .bk-d-md { color: #fff; }
+.bk-d-label {
+  font-size: 11px;
+  color: inherit;
+}
+.bk-d-md {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+  margin-top: 2px;
+}
+.bk-d-tip {
+  position: absolute;
+  top: -6px; right: -4px;
+  font-size: 9px;
+  background: var(--c-warn);
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 6px;
+  transform: scale(0.85);
+}
+
+.bk-cells {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.bk-cell {
+  flex: 0 0 calc((100% - 18px) / 4);
+  height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--c-text);
+  border: 1px solid transparent;
+}
+.bk-cell.on {
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+}
+
+.bk-slot-group + .bk-slot-group { margin-top: 10px; }
+.bk-slot-label {
+  font-size: 12px; color: var(--c-text-3);
+  margin-bottom: 4px;
+}
+.bk-slot-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.slot {
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 0;
+  text-align: center;
+  border: 1px solid transparent;
+}
+.slot-time { font-size: 14px; font-weight: 700; color: var(--c-text); }
+.slot-state { font-size: 10px; color: var(--c-text-3); margin-top: 2px; }
+
+.slot.few .slot-state { color: var(--c-warn); }
+.slot.full {
+  background: #F0EDE5;
+  color: var(--c-text-4);
+}
+.slot.full .slot-time { color: var(--c-text-4); }
+.slot.full .slot-state { color: var(--c-text-4); }
+.slot.selected {
+  background: var(--c-primary);
+}
+.slot.selected .slot-time, .slot.selected .slot-state {
+  color: #fff;
+}
+
+.bk-floor-wrap {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: var(--shadow-card);
+}
+.fp-legend {
+  display: flex; gap: 14px;
+  margin-top: 10px;
+  padding: 0 6px;
+  font-size: 11px; color: var(--c-text-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fp-legend .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  display: inline-block; margin-right: 4px;
+  vertical-align: middle;
+}
+.fp-legend .dot.open   { background: #B89668; border: 1px solid #97774A; }
+.fp-legend .dot.picked { background: var(--c-primary); }
+.fp-legend .dot.booked { background: #C8C3B0; }
+.fp-legend .dot.reco   { background: var(--c-gold); }
+.fp-legend .dot.under  { background: #E5DDC5; border: 1px dashed #C8BD9C; }
+
+.bk-deposit-info {
+  margin-top: 12px;
+  background: linear-gradient(135deg, #FBF4E0, #F0E2BE);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.bk-deposit-title {
+  font-size: 13px;
+  color: var(--c-primary-deep);
+  font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+}
+.bk-deposit-title b { font-size: 16px; color: var(--c-warn); }
+.bk-deposit-tag {
+  background: var(--c-primary);
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.bk-deposit-rule {
+  font-size: 10px;
+  color: var(--c-primary-deep);
+  margin-top: 4px;
+  opacity: 0.7;
+}
+.bk-rule-link {
+  font-size: 11px; color: var(--c-primary-deep);
+}
+
+.bk-footer {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 14px 18px;
+  background: #fff;
+  border-top: 1px solid var(--c-line);
+  z-index: 30;
+}
+.bk-foot-label { font-size: 11px; color: var(--c-text-3); }
+.bk-foot-price { font-size: 22px; font-weight: 700; color: var(--c-warn); }

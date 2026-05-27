@@ -1,0 +1,49 @@
+.help-scroll { background: var(--c-bg); padding-top: 12px; }
+
+.help-banner {
+  background: linear-gradient(135deg, #0E3D33, #1D5A4D);
+  color: #fff;
+  margin: 0 14px;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.hb-title { font-size: 16px; font-weight: 700; }
+.hb-sub   { font-size: 11px; opacity: 0.7; margin-top: 4px; }
+
+.help-list {
+  background: #fff;
+  margin: 0 14px;
+  border-radius: 12px;
+  padding: 4px 14px;
+  box-shadow: var(--shadow-card);
+}
+.faq {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.faq:last-child { border-bottom: none; }
+.faq summary {
+  font-size: 13px; color: var(--c-text); font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.faq summary::after {
+  content: '+';
+  color: var(--c-text-3);
+}
+.faq[open] summary::after { content: '−'; }
+.faq p {
+  margin-top: 8px;
+  font-size: 12px; color: var(--c-text-2);
+  line-height: 1.6;
+}
+
+.help-foot {
+  text-align: center;
+  margin: 18px 14px;
+  font-size: 11px;
+  color: var(--c-text-3);
+  line-height: 1.8;
+}

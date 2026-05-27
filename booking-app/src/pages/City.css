@@ -1,0 +1,27 @@
+.city-scroll { background: var(--c-bg); padding: 14px; }
+.city-current {
+  background: #fff; border-radius: 12px;
+  padding: 14px; display: flex; align-items: center; gap: 10px;
+  box-shadow: var(--shadow-card);
+}
+.city-current-label { font-size: 12px; color: var(--c-text-3); }
+.city-current-name { font-size: 16px; font-weight: 700; color: var(--c-primary); flex: 1; }
+.city-current-tip  { font-size: 12px; color: var(--c-text-3); }
+
+.city-section-title {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 13px; color: var(--c-text-3);
+  font-weight: 600;
+}
+.city-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}
+.city-chip {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--c-text);
+}

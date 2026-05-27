@@ -1,0 +1,242 @@
+.disc-navbar {
+  height: 44px; display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 700; background: var(--c-bg);
+  font-family: var(--f-serif);
+  letter-spacing: 4px;
+}
+.disc-tabs {
+  display: flex; gap: 22px; padding: 6px 16px 10px;
+  background: var(--c-bg);
+}
+.disc-tab {
+  font-size: 15px;
+  color: var(--c-text-3);
+  position: relative;
+  padding-bottom: 6px;
+}
+.disc-tab.on {
+  color: var(--c-text);
+  font-weight: 700;
+}
+.disc-tab.on::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  width: 22px; height: 3px;
+  background: var(--c-gold);
+  border-radius: 2px;
+}
+
+.disc-scroll { background: var(--c-bg); padding: 8px 12px 0; }
+
+/* 推荐：瀑布流 */
+.disc-grid {
+  columns: 2;
+  column-gap: 10px;
+}
+.disc-card {
+  break-inside: avoid;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.disc-card-img {
+  position: relative;
+  width: 100%;
+  height: 160px;
+}
+.disc-tag-floating {
+  position: absolute; left: 8px; top: 8px;
+  background: rgba(0,0,0,0.55); color: var(--c-gold-soft);
+  font-size: 10px; padding: 2px 7px; border-radius: 4px;
+  letter-spacing: 1px;
+}
+.disc-card-body { padding: 8px 10px 10px; }
+.disc-name {
+  font-family: var(--f-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: 1px;
+}
+.disc-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px;
+  color: var(--c-text-3);
+  margin-top: 4px;
+}
+.disc-rest {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 70%;
+}
+.disc-price { color: var(--c-warn); font-weight: 700; }
+.disc-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 6px;
+}
+.disc-fav {
+  font-size: 11px; color: var(--c-text-3);
+}
+
+/* 招牌菜：按餐厅分组 */
+.signature-list { padding: 4px 0; }
+.sig-block {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-card);
+}
+.sig-header {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-line);
+}
+.sig-r-img {
+  width: 40px; height: 40px;
+  border-radius: 8px; overflow: hidden;
+}
+.sig-r-info { flex: 1; }
+.sig-r-name {
+  font-family: var(--f-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: 1.5px;
+}
+.sig-r-meta { font-size: 11px; color: var(--c-text-3); margin-top: 2px; }
+.sig-more { font-size: 12px; color: var(--c-primary); }
+
+.sig-dishes {
+  display: flex; gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+.sig-dishes::-webkit-scrollbar { display: none; }
+.sig-dish {
+  flex: 0 0 calc((100% - 20px) / 3);
+  min-width: 96px;
+}
+.sig-dish-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.sig-dish-name {
+  font-size: 11px; color: var(--c-text);
+  margin-top: 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sig-dish-price { font-size: 11px; color: var(--c-warn); font-weight: 600; margin-top: 2px; }
+
+/* 榜单 */
+.rank-list { padding: 4px 0; }
+.rank-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+}
+.rank-banner {
+  position: relative;
+  height: 120px;
+}
+.rank-banner-mask {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 14px;
+  color: #fff;
+}
+.rank-title {
+  font-family: var(--f-serif);
+  font-size: 17px; font-weight: 700;
+  color: var(--c-gold-soft);
+  letter-spacing: 4px;
+}
+.rank-desc { font-size: 11px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+
+.rank-restaurants { padding: 8px 14px; }
+.rank-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-no {
+  width: 22px; height: 22px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-text-3);
+}
+.rank-no.rank-1 { color: #fff; background: #C8A55C; border-radius: 4px; }
+.rank-no.rank-2 { color: #fff; background: #A8A8A8; border-radius: 4px; }
+.rank-no.rank-3 { color: #fff; background: #B07D54; border-radius: 4px; }
+.rank-img {
+  width: 56px; height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.rank-info { flex: 1; min-width: 0; }
+.rank-name {
+  font-family: var(--f-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: 1.5px;
+}
+.rank-meta {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--c-text-3);
+  margin-top: 4px;
+}
+.rank-more {
+  text-align: center;
+  padding: 12px 0;
+  font-size: 12px;
+  color: var(--c-primary);
+  border-top: 1px solid var(--c-line);
+}
+
+/* 主题 */
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 4px 0 0;
+}
+.theme-card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.theme-cover {
+  position: relative;
+  height: 160px;
+}
+.theme-mask {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+  color: #fff;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 14px 16px;
+}
+.theme-name {
+  font-family: var(--f-serif);
+  font-size: 18px; font-weight: 700;
+  color: var(--c-gold-soft);
+  letter-spacing: 4px;
+}
+.theme-desc { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+.theme-count { font-size: 12px; color: #fff; margin-top: 6px; }

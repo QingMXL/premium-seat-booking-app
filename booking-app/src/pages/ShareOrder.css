@@ -1,0 +1,70 @@
+.so-scroll { background: var(--c-bg); padding: 14px; }
+
+.so-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 0;
+  box-shadow: var(--shadow-card);
+}
+.so-card-head {
+  padding: 0 16px 14px;
+  text-align: center;
+}
+.so-card-img {
+  height: 160px;
+  margin: 0 14px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.so-head-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--c-primary);
+}
+.so-head-sub {
+  font-size: 12px;
+  color: var(--c-text-3);
+  margin-top: 4px;
+}
+
+.so-info { padding: 14px 16px 4px; }
+.so-name { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.so-row {
+  display: flex; justify-content: space-between;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--c-line);
+}
+.so-row:last-child { border-bottom: none; }
+.so-row span { color: var(--c-text-3); }
+.so-row b { color: var(--c-text); font-weight: 600; }
+
+.so-actions-in {
+  display: flex; gap: 10px;
+  padding: 8px 16px 0;
+}
+
+.so-channels {
+  background: #fff;
+  margin-top: 12px;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+}
+.ch-row {
+  display: flex; justify-content: space-around;
+  text-align: center;
+}
+.ch-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  margin: 0 auto 6px;
+}
+.ch-icon.wx { background: #2BB95A; }
+.ch-icon.mo { background: #2BB95A; opacity: 0.8; }
+.ch-icon.copy { background: var(--c-primary); }
+.ch-icon.save { background: var(--c-text-3); }
+.ch > div:last-child { font-size: 11px; color: var(--c-text-2); }
