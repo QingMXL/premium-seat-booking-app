@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { restaurants } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Restaurant.css'
 
 export default function Restaurant() {
   const { id } = useParams()
   const nav = useNavigate()
   const toast = useToast()
-  const r = restaurants.find(x => x.id === id) || restaurants[0]
+  const { restaurants } = useApp()
+  const r = restaurants.find(x => x.id === id) || restaurants[0] || {}
   const [imgIdx, setImgIdx] = useState(0)
   const [fav, setFav] = useState(false)
   const [showPhone, setShowPhone] = useState(false)

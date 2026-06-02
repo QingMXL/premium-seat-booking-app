@@ -1,8 +1,9 @@
 import NavBar from '../components/NavBar.jsx'
-import { contacts } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Contacts.css'
 
 export default function Contacts() {
+  const { contacts } = useApp()
   return (
     <>
       <NavBar title="常用联系人" right={<span style={{fontSize:13, color:'var(--c-primary)'}}>+ 添加</span>} />

@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom'
 import TabBar from '../components/TabBar.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { user, orders, coupons } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import { IMG } from '../data/images.js'
 import './Profile.css'
 
 export default function Profile() {
   const nav = useNavigate()
   const toast = useToast()
+  const { user, orders, coupons } = useApp()
 
   const entries = [
     { key: 'orders',    label: '我的预订', icon: '☷', to: '/orders' },

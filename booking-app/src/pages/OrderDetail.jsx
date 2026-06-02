@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import NavBar from '../components/NavBar.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { orders } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import { cancelLimit, getRemaining, isCancelledLocally, tryCancel } from '../data/cancelStore.js'
 import './OrderDetail.css'
 
@@ -12,7 +12,8 @@ export default function OrderDetail() {
   const nav = useNavigate()
   const loc = useLocation()
   const toast = useToast()
-  const o = orders.find(x => x.id === id) || orders[0]
+  const { orders } = useApp()
+  const o = orders.find(x => x.id === id) || orders[0] || {}
 
   const [showCancel, setShowCancel] = useState(false)
   // 本地"已取消"状态：mock 数据本身不可变，所以用 local 标记呈现

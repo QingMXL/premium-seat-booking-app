@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar.jsx'
 import TabBar from '../components/TabBar.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { orders } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Orders.css'
 
 const tabs = [
@@ -18,15 +18,16 @@ export default function Orders() {
   const [tab, setTab] = useState('pending')
   const nav = useNavigate()
   const toast = useToast()
+  const { orders } = useApp()
 
-  const list = useMemo(() => orders.filter(o => o.status === tab), [tab])
+  const list = useMemo(() => orders.filter(o => o.status === tab), [tab, orders])
 
   // 各 Tab 的统计角标
   const counts = useMemo(() => {
     const m = { unpaid: 0, pending: 0, done: 0, cancelled: 0 }
     orders.forEach(o => { m[o.status] = (m[o.status] || 0) + 1 })
     return m
-  }, [])
+  }, [orders])
 
   return (
     <>

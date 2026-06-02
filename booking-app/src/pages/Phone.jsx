@@ -1,8 +1,9 @@
 import NavBar from '../components/NavBar.jsx'
-import { user } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Phone.css'
 
 export default function Phone() {
+  const { user } = useApp()
   return (
     <>
       <NavBar title="手机号管理" />

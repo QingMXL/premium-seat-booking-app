@@ -2,14 +2,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import NavBar from '../components/NavBar.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { orders } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './ShareOrder.css'
 
 export default function ShareOrder() {
   const { id } = useParams()
   const nav = useNavigate()
   const toast = useToast()
-  const o = orders.find(x => x.id === id) || orders[0]
+  const { orders } = useApp()
+  const o = orders.find(x => x.id === id) || orders[0] || {}
 
   return (
     <>

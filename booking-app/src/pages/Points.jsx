@@ -1,8 +1,9 @@
 import NavBar from '../components/NavBar.jsx'
-import { user, pointHistory } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Points.css'
 
 export default function Points() {
+  const { user, pointHistory } = useApp()
   return (
     <>
       <NavBar title="我的积分" right={<span style={{fontSize:12, color:'var(--c-primary)'}}>积分规则</span>} />

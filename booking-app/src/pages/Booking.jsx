@@ -5,17 +5,19 @@ import FloorPlan from '../components/FloorPlan.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
 import {
-  restaurants, areas, partySizes,
+  areas, partySizes,
   slotsLunch, slotsDinner, slotStatus, nextDays,
   floorPlanLayout,
 } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Booking.css'
 
 export default function Booking() {
   const { id } = useParams()
   const nav = useNavigate()
   const toast = useToast()
-  const r = restaurants.find(x => x.id === id) || restaurants[0]
+  const { restaurants } = useApp()
+  const r = restaurants.find(x => x.id === id) || restaurants[0] || {}
   const days = useMemo(() => nextDays(7), [])
 
   const [dateIdx, setDateIdx] = useState(0)

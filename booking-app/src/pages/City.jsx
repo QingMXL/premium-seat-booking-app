@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import NavBar from '../components/NavBar.jsx'
-import { cities } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './City.css'
 
 export default function City() {
   const nav = useNavigate()
+  const { cities } = useApp()
   return (
     <>
       <NavBar title="选择城市" />

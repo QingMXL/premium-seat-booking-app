@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import TabBar from '../components/TabBar.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { trendingDishes, themes, ranks, restaurants } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Discover.css'
 
 const tabs = [
@@ -17,6 +17,7 @@ export default function Discover() {
   const nav = useNavigate()
   const toast = useToast()
   const [tab, setTab] = useState('rec')
+  const { trendingDishes, themes, ranks, restaurants } = useApp()
 
   return (
     <>

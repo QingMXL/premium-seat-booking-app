@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import TabBar from '../components/TabBar.jsx'
 import RestaurantCard from '../components/RestaurantCard.jsx'
 import SmartImg from '../components/SmartImg.jsx'
-import { restaurants, quickFilters, scenes } from '../data/mock.js'
+import { quickFilters, scenes } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import { IMG } from '../data/images.js'
 import { useToast } from '../components/Toast.jsx'
 import './Home.css'
@@ -12,6 +13,7 @@ export default function Home() {
   const nav = useNavigate()
   const toast = useToast()
   const [active, setActive] = useState('all')
+  const { restaurants } = useApp()
 
   const filtered = useMemo(() => {
     if (active === 'all') return restaurants
@@ -21,7 +23,7 @@ export default function Home() {
     if (active === 'bar')     return restaurants.filter(r => r.suits?.includes('bar'))
     if (active === 'hotel')   return restaurants.filter(r => r.price >= 500)
     return restaurants.filter(r => r.suits?.includes(active))
-  }, [active])
+  }, [active, restaurants])
 
   const activeFilter = quickFilters.find(f => f.key === active)
   const empty = filtered.length === 0

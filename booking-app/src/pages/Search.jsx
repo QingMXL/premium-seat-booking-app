@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import NavBar from '../components/NavBar.jsx'
 import RestaurantCard from '../components/RestaurantCard.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { restaurants } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Search.css'
 
 const filters = [
@@ -25,6 +25,7 @@ export default function Search() {
   const [keyword, setKeyword] = useState('')
   const [sort, setSort] = useState('smart')
   const toast = useToast()
+  const { restaurants } = useApp()
 
   const list = useMemo(() => {
     let arr = restaurants
@@ -43,7 +44,7 @@ export default function Search() {
     if (sort === 'priceAsc')  cp.sort((a,b) => a.price - b.price)
     if (sort === 'priceDesc') cp.sort((a,b) => b.price - a.price)
     return cp
-  }, [keyword, sort])
+  }, [keyword, sort, restaurants])
 
   return (
     <>

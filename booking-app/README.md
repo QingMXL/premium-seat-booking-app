@@ -1,125 +1,199 @@
-# 臻选 · 餐厅预订 Demo
+# 臻选好餐厅 · Premium Seat Booking App
 
-基于 React + Vite + React Router 的手机端餐厅预订小程序原型，按 PRD v0.1 实现 MVP 全量用户端。
+> 高端餐厅预订小程序消费者端，React 18 + Vite 5 + Supabase，移动端优先设计。
 
-## 本地开发
+![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646cff?logo=vite&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Backend-3ecf8e?logo=supabase&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## ✨ 功能概览
+
+| 模块 | 功能 |
+|------|------|
+| **首页** | 餐厅推荐列表、快捷筛选（包间 / 今晚可订 / 场景分类）、热门场景入口 |
+| **餐厅详情** | 图集轮播、菜品展示、包间选择、口碑评分 |
+| **预订流程** | 日期 / 时段选择、SVG 平面图选座、定金确认 |
+| **订单管理** | 多状态订单（待支付 / 待到店 / 已完成 / 已取消）、核销二维码 |
+| **发现页** | 热门菜品、主题集合、城市排行榜 |
+| **个人中心** | 用户资料、积分流水、常用联系人、会员礼遇 |
+| **搜索** | 关键词搜索 + 多维度筛选排序 |
+
+---
+
+## 🛠 技术栈
+
+| 层 | 技术 |
+|----|------|
+| 前端框架 | React 18 + React Router v6 |
+| 构建工具 | Vite 5 |
+| 后端 / 数据库 | Supabase（PostgreSQL + PostgREST + Auth） |
+| 状态管理 | React Context（AppContext 统一数据层） |
+| 样式 | 纯 CSS（CSS 变量 + 响应式，无 UI 库） |
+| 图片资源 | Unsplash 公开 CDN |
+
+---
+
+## 📁 项目结构
+
+```
+src/
+├── components/          # 可复用组件
+│   ├── FloorPlan.jsx    # SVG 平面图选座（三态：可用 / 已订 / 推荐）
+│   ├── RestaurantCard   # 餐厅卡片
+│   ├── SmartImg         # 图片懒加载 + 占位
+│   └── Toast            # 全局轻提示
+├── context/
+│   └── AppContext.jsx   # 全局数据层（从 Supabase 加载全量数据）
+├── data/
+│   ├── api.js           # Supabase 数据层 + DB ↔ UI 字段映射
+│   ├── mock.js          # 静态 UI 配置（筛选 / 场景 / 时段 / 平面图）
+│   └── images.js        # Unsplash 图片 URL 映射
+├── lib/
+│   └── supabase.js      # Supabase 客户端（从 .env 读取）
+├── pages/               # 16 个路由页面
+└── styles/
+    └── global.css       # 全局样式 + Design Token
+```
+
+---
+
+## 🚀 快速开始
+
+### 1. 克隆项目
 
 ```bash
-cd booking-app
+git clone git@github.com:QingMXL/premium-seat-booking-app.git
+cd premium-seat-booking-app
+```
+
+### 2. 安装依赖
+
+```bash
 npm install
-npm run dev          # 开发模式，自带热更新
-npm run build        # 生产构建，产物在 dist/
-npm run preview      # 预览构建产物
 ```
 
-dev 模式默认监听 `0.0.0.0:5173`（或自动后移），同一 Wi-Fi 的手机可直接访问 `http://<电脑IP>:5173/`。
+### 3. 配置环境变量
 
-## 部署上线
-
-构建产物完全静态（`dist/` 目录），路由用 `HashRouter`（URL 形如 `https://你的域名/#/home`），**不需要后端转发**，扔到任何静态托管都能跑：
-
-### Vercel / Netlify / Cloudflare Pages
-1. 把整个 `booking-app/` 推到 Git
-2. 平台选择 framework = Vite，build command `npm run build`，output dir `dist`
-3. 直接绑定域名
-
-### Nginx
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    root /var/www/booking-app/dist;
-    index index.html;
-    location / { try_files $uri /index.html; }
-    # 静态资源缓存
-    location /assets/ { expires 30d; }
-}
+```bash
+cp .env.example .env
 ```
 
-### 直接上传到对象存储
-- 阿里云 OSS / 腾讯云 COS / AWS S3：把 `dist/` 整个目录上传，开静态网站托管
-- 设置默认文档 `index.html`，错误文档也指向 `index.html`
+编辑 `.env`，填入你的 Supabase 项目信息：
 
-## 项目结构
-
-```
-booking-app/
-├── index.html
-├── package.json
-├── vite.config.js
-├── src/
-│   ├── main.jsx            # 入口 + Router + Toast
-│   ├── App.jsx             # 路由表
-│   ├── components/
-│   │   ├── PhoneShell.jsx  # 桌面端的手机外壳
-│   │   ├── NavBar.jsx
-│   │   ├── TabBar.jsx
-│   │   ├── RestaurantCard.jsx
-│   │   ├── FloorPlan.jsx   # SVG 餐厅平面图
-│   │   ├── SmartImg.jsx    # 带 loading 的图片组件
-│   │   └── Toast.jsx       # 全局 Toast 反馈
-│   ├── pages/              # 用户端 16 个页面
-│   ├── data/
-│   │   ├── mock.js         # 餐厅 / 订单 / 用户 mock
-│   │   └── images.js       # Unsplash 图片 URL 映射
-│   └── styles/global.css
-└── dist/                   # 构建产物（npm run build 生成）
+```env
+VITE_SUPABASE_URL=https://<your-project-ref>.supabase.co
+VITE_SUPABASE_KEY=<your-supabase-key>
+VITE_DEMO_USER_ID=<demo-user-uuid>
 ```
 
-## 路由表
+> **在哪里找这些值？**
+> - `VITE_SUPABASE_URL` / `VITE_SUPABASE_KEY`：Supabase 控制台 → Project Settings → API
+> - `VITE_DEMO_USER_ID`：Supabase 控制台 → Authentication → Users
+
+### 4. 初始化数据库
+
+在 **Supabase SQL Editor** 中依次执行（位于项目根目录 `supabase-setup/`）：
+
+```
+001_schema.sql   # 建表 + 索引 + RLS 策略
+002_seed.sql     # 城市 / 餐厅 / 菜品等初始数据
+```
+
+然后运行数据加载脚本（填充用户 / 订单等测试数据）：
+
+```bash
+node supabase-setup/load_data.mjs
+```
+
+### 5. 启动开发服务器
+
+```bash
+npm run dev
+# → http://localhost:5173
+```
+
+---
+
+## 📱 界面预览
+
+应用采用移动端优先设计，模拟 iPhone 形态（390px 宽），奢华暗金风格：
+
+- **主色调**：深绿 `#0E3D33` + 暖金 `#C8A55C`
+- **背景**：米黄 `#F4F1EA`
+- **动效**：仅使用 `transform` / `opacity`（GPU 合成层，不触发回流）
+
+---
+
+## 🗄 数据库表结构（15 张）
+
+| 表名 | 说明 |
+|------|------|
+| `cities` | 城市列表（热门标记）|
+| `restaurants` | 餐厅主表（评分、设施、口碑分） |
+| `restaurant_tags` | 餐厅标签（多对多）|
+| `restaurant_gallery` | 餐厅图集 |
+| `dishes` | 菜品（热门标记、点赞数）|
+| `rooms` | 包间（容量、最低消费）|
+| `floor_plan_tables` | 平面图桌位（按餐厅可选启用）|
+| `orders` | 订单（状态机：unpaid / pending / done / cancelled）|
+| `user_profiles` | 用户资料（关联 Supabase Auth）|
+| `contacts` | 常用联系人 |
+| `point_history` | 积分流水 |
+| `themes` | 发现页主题集合 |
+| `theme_restaurants` | 主题 ↔ 餐厅 |
+| `rankings` | 榜单 |
+| `ranking_restaurants` | 榜单 ↔ 餐厅 |
+
+---
+
+## 🔒 安全说明
+
+- 所有密钥通过 `.env` 注入，`.env` 已加入 `.gitignore`，**不会提交到 Git**
+- 生产环境应使用 `anon key` + 完整 RLS 策略（当前开发使用 `service_role`）
+- `VITE_DEMO_USER_ID` 仅供演示，接入真实 Supabase Auth 后应移除
+- 所有 Supabase RLS 策略：公开表只读，用户私有数据（订单/积分/联系人）仅本人访问
+
+---
+
+## 🗺 路由表
 
 | 路由 | 页面 |
 |------|------|
-| `/home` | 首页 · 推荐餐厅 + 热门场景 + 快捷筛选 |
-| `/discover` | 发现 · 推荐 / 招牌菜 / 榜单 / 主题 |
-| `/orders` | 我的订单 · 待支付 / 待到店 / 已完成 / 已取消 |
+| `/home` | 首页 |
+| `/discover` | 发现 |
+| `/orders` | 订单列表 |
 | `/orders/:id` | 订单详情 |
-| `/orders/:id/share` | 订单分享卡片 |
-| `/profile` | 我的 |
-| `/favorites` | 我的收藏（店 / 菜） |
-| `/points` | 我的积分 |
-| `/contacts` | 常用联系人 |
-| `/phone` | 手机号管理 |
-| `/help` | 客服与 FAQ |
-| `/city` | 城市选择 |
-| `/search` | 搜索结果 |
+| `/orders/:id/share` | 分享订单 |
+| `/profile` | 个人中心 |
 | `/restaurant/:id` | 餐厅详情 |
-| `/booking/:id` | 预订流程（含 SVG 平面图选座） |
-| `/payment-result` | 支付成功 |
+| `/booking/:id` | 预订流程 |
+| `/search` | 搜索 |
+| `/favorites` | 收藏 |
+| `/points` | 积分 |
+| `/contacts` | 联系人 |
+| `/city` | 城市选择 |
+| `/phone` | 手机号管理 |
+| `/help` | 帮助中心 |
+| `/payment-result` | 支付结果 |
 
-## 图片资源
+---
 
-所有图片来自 **Unsplash 公开 CDN**，集中维护在 `src/data/images.js`。
-- 优点：免本地资源、立即生效、自带响应式（URL 带 `?w=` 参数）
-- 替换为自有图：把图放到 `public/images/your.jpg`，修改 `images.js` 把 URL 改成 `/images/your.jpg`
+## 📦 构建部署
 
-## 设计风格
+```bash
+npm run build   # 产物输出到 dist/
+```
 
-- 主色：深绿 `#0E3D33`
-- 强调：金 `#C8A55C`
-- 背景：米黄 `#F4F1EA`
-- 桌面端套手机外壳预览；移动端自动全屏 viewport
-- HashRouter（无需后端 fallback）
+产物为纯静态文件（HashRouter），可直接部署到：
+- **Vercel / Netlify**：Framework = Vite，Build = `npm run build`，Output = `dist`
+- **Nginx**：`root` 指向 `dist/`，`try_files $uri /index.html`
+- **OSS / S3**：上传 `dist/` 目录，开启静态网站托管
 
-## 完成清单
+---
 
-**对照 PRD MVP 用户端：**
-- [x] 城市与区域选择
-- [x] 餐厅列表（首页快捷筛选 + 排序）
-- [x] 餐厅详情（环境/招牌菜/包间/评价）
-- [x] 日期 / 人数 / 时间段 / 区域选择
-- [x] 大厅 / 包间选择
-- [x] SVG 平面图选座（含已订、已选、推荐三态）
-- [x] 50 元定金支付（含支付结果页）
-- [x] 订单生成与列表
-- [x] 订单详情与状态机
-- [x] 收藏餐厅 / 收藏菜品
-- [x] 分享餐厅 / 分享订单
-- [x] 手机号管理
-- [x] 客服与 FAQ
-- [x] 积分与会员体系（基础）
+## 📄 License
 
-**待二期：**
-- [ ] 真实订单状态机后端
-- [ ] 支付 SDK 接入
-- [ ] 商家端 + 平台管理端
+MIT © 2026

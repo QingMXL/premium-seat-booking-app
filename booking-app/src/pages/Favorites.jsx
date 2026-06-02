@@ -4,13 +4,14 @@ import NavBar from '../components/NavBar.jsx'
 import RestaurantCard from '../components/RestaurantCard.jsx'
 import SmartImg from '../components/SmartImg.jsx'
 import { useToast } from '../components/Toast.jsx'
-import { restaurants, trendingDishes } from '../data/mock.js'
+import { useApp } from '../context/AppContext.jsx'
 import './Favorites.css'
 
 export default function Favorites() {
   const [tab, setTab] = useState('store')
   const nav = useNavigate()
   const toast = useToast()
+  const { restaurants, trendingDishes } = useApp()
   return (
     <>
       <NavBar title="我的收藏" />
