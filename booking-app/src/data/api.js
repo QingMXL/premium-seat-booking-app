@@ -244,45 +244,49 @@ export async function fetchRestaurants() {
 }
 
 export async function fetchOrders() {
+  if (!CURRENT_USER_ID) return []  // anon key 下无用户 ID，返回空
   const { data, error } = await supabase
     .from('orders')
     .select('*, restaurants(name, tag, cover_url)')
     .eq('user_id', CURRENT_USER_ID)
     .order('created_at', { ascending: false })
 
-  if (error) throw error
+  if (error) { console.warn('[api] fetchOrders:', error.message); return [] }
   return data.map(mapOrder)
 }
 
 export async function fetchProfile() {
+  if (!CURRENT_USER_ID) return null
   const { data, error } = await supabase
     .from('user_profiles')
     .select('*')
     .eq('id', CURRENT_USER_ID)
     .single()
 
-  if (error) throw error
+  if (error) { console.warn('[api] fetchProfile:', error.message); return null }
   return mapProfile(data)
 }
 
 export async function fetchContacts() {
+  if (!CURRENT_USER_ID) return []
   const { data, error } = await supabase
     .from('contacts')
     .select('id, name, phone, tag')
     .eq('user_id', CURRENT_USER_ID)
 
-  if (error) throw error
+  if (error) { console.warn('[api] fetchContacts:', error.message); return [] }
   return data
 }
 
 export async function fetchPointHistory() {
+  if (!CURRENT_USER_ID) return []
   const { data, error } = await supabase
     .from('point_history')
     .select('id, title, pts, ref_date')
     .eq('user_id', CURRENT_USER_ID)
     .order('ref_date', { ascending: false })
 
-  if (error) throw error
+  if (error) { console.warn('[api] fetchPointHistory:', error.message); return [] }
   return data.map(d => ({ ...d, date: d.ref_date }))
 }
 

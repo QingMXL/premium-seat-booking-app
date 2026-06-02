@@ -5,7 +5,10 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
-  throw new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_KEY — copy .env.example to .env')
+  console.error('[supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_KEY — check Vercel env vars')
 }
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+export const supabase = createClient(
+  SUPABASE_URL  ?? 'https://placeholder.supabase.co',
+  SUPABASE_KEY  ?? 'placeholder',
+)

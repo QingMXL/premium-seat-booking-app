@@ -32,31 +32,42 @@ export function AppProvider({ children }) {
   const [state, setState] = useState(EMPTY)
 
   useEffect(() => {
-    Promise.all([
-      fetchRestaurants(),
-      fetchOrders(),
-      fetchProfile(),
-      fetchContacts(),
-      fetchPointHistory(),
-      fetchTrendingDishes(),
-      fetchThemes(),
-      fetchRanks(),
-      fetchCities(),
-    ])
-      .then(([restaurants, orders, user, contacts, pointHistory,
-              trendingDishes, themes, ranks, cities]) => {
+    // 公开数据与用户数据分开加载：公开数据失败才算致命错误
+    async function load() {
+      try {
+        // ① 公开数据（anon key 下可访问）
+        const [restaurants, trendingDishes, themes, ranks, cities] = await Promise.all([
+          fetchRestaurants(),
+          fetchTrendingDishes(),
+          fetchThemes(),
+          fetchRanks(),
+          fetchCities(),
+        ])
+
+        // ② 用户数据（需要登录 / service_role；失败时优雅降级为空）
+        const [orders, user, contacts, pointHistory] = await Promise.allSettled([
+          fetchOrders(),
+          fetchProfile(),
+          fetchContacts(),
+          fetchPointHistory(),
+        ]).then(results => results.map(r => r.value ?? (r.reason && null)))
+
         setState({
-          restaurants, orders, user, contacts, pointHistory,
-          trendingDishes, themes, ranks, cities,
+          restaurants, trendingDishes, themes, ranks, cities,
+          orders:       orders       ?? [],
+          user:         user         ?? DEFAULT_USER,
+          contacts:     contacts     ?? [],
+          pointHistory: pointHistory ?? [],
           coupons,
           loading: false,
           error: null,
         })
-      })
-      .catch(err => {
-        console.error('[AppContext] 数据加载失败:', err)
+      } catch (err) {
+        console.error('[AppContext] 公开数据加载失败:', err)
         setState(s => ({ ...s, loading: false, error: err.message }))
-      })
+      }
+    }
+    load()
   }, [])
 
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>
