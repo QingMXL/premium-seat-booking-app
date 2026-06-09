@@ -2,6 +2,10 @@
 node_modules/
 .pnpm-store/
 
+# 本地文档（设计说明文档保存在本地，不入库）
+*.docx
+docs/
+
 # 构建产物（用户自己 build；不入库）
 booking-app/dist/
 booking-app/build/
