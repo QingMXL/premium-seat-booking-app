@@ -63,6 +63,7 @@ React 18 · Vite 5 · React Router (HashRouter, no server fallback needed) · Su
 |------|------|
 | **premium-seat-booking-app** (this repo) | Consumer app (C-side) |
 | [premium-seat-merchant-app](https://github.com/QingMXL/premium-seat-merchant-app) | Merchant console (B-side): confirm bookings, check-in, tables & dishes |
+| [Premium-Seat---Admin](https://github.com/QingMXL/Premium-Seat---Admin) | Platform console (operations): restaurants, merchants, orders & users |
 
 ## 📄 License
 
