@@ -62,7 +62,6 @@ React 18 · Vite 5 · React Router（HashRouter，免后端 fallback）· Supaba
 |------|------|
 | **premium-seat-booking-app**（本仓库） | 用户端（C 端） |
 | [premium-seat-merchant-app](https://github.com/QingMXL/premium-seat-merchant-app) | 商家端（B 端）：接单确认、到店核销、桌台菜品管理 |
-| [premium-seat-service](https://github.com/QingMXL/premium-seat-service) | FastAPI 统一 API 服务层 |
 
 ## 📄 License
 
