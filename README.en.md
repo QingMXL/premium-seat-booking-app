@@ -1,5 +1,7 @@
-<h1 align="center">🍽 Premium Seat</h1>
-<p align="center"><i>A modern restaurant reservation app for city dining</i></p>
+<h1 align="center">🍽 Premium Seat · Consumer App</h1>
+
+<p align="center"><b>每一餐都值得期待 · Every meal worth the wait</b></p>
+<p align="center"><i>The consumer-facing (C-side) app of the Premium Seat restaurant-reservation platform — where diners discover restaurants, pick seats on a floor plan, and lock tables with a deposit</i></p>
 
 <p align="center">
   <a href="./README.md"><img src="https://img.shields.io/badge/lang-简体中文-B8923F?style=for-the-badge" alt="简体中文"></a>
@@ -9,94 +11,59 @@
 <p align="center">
   <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=fff&labelColor=20232A" />
   <img src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=fff" />
-  <img src="https://img.shields.io/badge/Router-HashRouter-CA4245?logo=reactrouter&logoColor=fff" />
+  <img src="https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase&logoColor=fff" />
   <img src="https://img.shields.io/badge/style-Menu_Serif-B8923F" />
 </p>
 
 ---
 
+## 📱 Screenshots
+
+<p align="center">
+  <img src="screenshots/app-home.png" width="24%" alt="Home · Discover" />
+  <img src="screenshots/app-restaurant.png" width="24%" alt="Restaurant detail · Menu-style dishes" />
+  <img src="screenshots/app-booking.png" width="24%" alt="Booking · Floor-plan seat picker" />
+  <img src="screenshots/app-orders.png" width="24%" alt="My orders · Check-in QR" />
+</p>
+<p align="center"><sub>Home · Restaurant detail · Floor-plan seat picker · My orders (live data from Supabase)</sub></p>
+
 ## 🌟 About
 
-**Premium Seat** is a mobile-web prototype for restaurant reservations in city dining scenes. Built around the questions *"where to eat, when, which seat, with whom, and is it guaranteed?"*, it covers the full journey — **discover → pick a seat → pay a deposit → share with friends → re-book and review** — in a single phone-shaped demo.
-
-> Not a restaurant directory. A reservation system designed for **certainty** and **assurance** — deposit-locked seats, real floor-plan seat selection, monthly cancellation quota, and shareable orders.
+This is the **consumer app** of the three-sided **Premium Seat** platform. Built for city dining occasions, it turns *"where to eat, when, which seat, with whom, and is it guaranteed?"* into one complete reservation journey — diners discover top-rated restaurants, browse ambience and signature dishes, pick an exact table on an interactive floor plan by date / party size / time slot, lock the seat with a deposit, receive a check-in QR code, and share the booking with friends. The merchant console handles fulfilment and the platform console handles operations, all three sharing one database in real time.
 
 ## ✨ Features
 
 | Module | Highlights |
 |--------|-----------|
-| 🏠 **Home** | City picker, search, **depth-of-field hero banner**, 8 quick filters (nearby / private room / tonight / friends / business / ...), trending occasions |
-| 🔍 **Search** | Keyword fuzzy match, 6 filter dimensions, 4 sort orders |
-| 🍽 **Restaurant detail** | Cover gallery, **menu-style signature dishes**, ambience & private-room photos, ratings, phone / map / share / favorite |
-| 📅 **Reservation flow** | Date / party size / area / time slot / **SVG floor plan seat picker** (round + square tables, chairs, capacity-aware) |
-| 💳 **Deposit payment** | From ¥50, deducted on-site, transparent refund policy, success page |
-| 📋 **My orders** | 4 tabs with distinct layouts — Unpaid / Pending / Completed / Cancelled; **only "Unpaid" shows a red badge** |
-| 🚫 **Cancel order** | **3 cancellations per month** (localStorage-persisted, auto-resets) with policy preview |
-| 🔗 **Share order** | WeChat / Moments / copy link / save image |
-| ⭐ **Membership** | Gold member, points history, favorites (shops + dishes), saved contacts, support FAQ |
-
-## 🎨 Design language
-
-- **Palette**: deep green `#0E3D33` + antique gold `#B8923F` + paper beige `#F2EBDA`
-- **Type**: Noto Serif SC (CJK serif) + Cormorant Garamond (Latin serif)
-- **Style**: fine-dining menu — gold rules, dotted price leaders, paper texture
-- **Imagery**: Unsplash public CDN, hand-picked per dish / theme
-
-## 📐 Tech stack
-
-- **React 18** + React Router 6 (HashRouter — **no server-side fallback needed**)
-- **Vite 5** bundler
-- Pure CSS with CSS Variables (no UI framework)
-- **Zero backend dependency** — fully static output, deploy anywhere
+| 🏠 Home | Depth-of-field hero, quick filters (nearby / private room / tonight / occasions), curated picks |
+| 🍽 Restaurant detail | Cover gallery, menu-style signature dishes with dotted price leaders, private rooms, ratings |
+| 📅 Booking flow | Date / party / area / slot steps + **SVG floor-plan seat picker** (capacity-aware) |
+| 💳 Deposit lock | From ¥50, deducted on-site, transparent refund policy |
+| 📋 Orders | 4-state lifecycle, check-in QR, **3 cancellations per month** |
+| ⭐ Membership | Points, favorites (restaurants + dishes), coupons, saved contacts |
 
 ## 🚀 Quick start
 
 ```bash
-cd booking-app
-npm install
-npm run dev          # local dev (with phone-frame preview on desktop)
-npm run build        # static build → dist/
-npm run preview      # preview the build
+npm install --prefix booking-app
+cp booking-app/.env.example booking-app/.env   # fill in your Supabase URL & key
+npm run dev --prefix booking-app               # → http://localhost:5173
 ```
 
-See [booking-app/README.md](./booking-app/README.md) for full details.
+Database setup: run `supabase-setup/001_schema.sql` and `002_seed.sql` in the Supabase SQL Editor, then `node supabase-setup/load_data.mjs` for demo data.
 
-## 📂 Repo layout
+## 🛠 Tech stack
 
-```
-.
-├── README.md                          ← 简体中文
-├── README.en.md                       ← English (you are here)
-└── booking-app/                       ← Demo source (React + Vite)
-    ├── README.md                      ← Local dev & deploy guide
-    ├── package.json
-    ├── src/
-    │   ├── pages/                     ← 16 user-facing pages
-    │   ├── components/
-    │   │   ├── FloorPlan.jsx          ← SVG floor-plan seat picker
-    │   │   ├── PhoneShell.jsx         ← Desktop phone-frame wrapper
-    │   │   ├── SmartImg.jsx           ← Image with loading state
-    │   │   └── Toast.jsx              ← Global lightweight toast
-    │   ├── data/
-    │   │   ├── mock.js                ← Restaurant / order / user mocks
-    │   │   ├── images.js              ← Unsplash image map
-    │   │   └── cancelStore.js         ← Monthly cancel quota
-    │   └── styles/global.css
-    └── index.html
-```
+React 18 · Vite 5 · React Router (HashRouter, no server fallback needed) · Supabase (PostgreSQL + Auth) · pure-CSS design tokens (deep green `#0E3D33` + antique gold `#C8A55C`, fine-dining menu aesthetic)
 
-## 📦 Deploy
+## 🔗 Sibling repositories
 
-The `dist/` build is fully static — drop it anywhere:
-
-- **Vercel / Netlify / Cloudflare Pages**: auto-detected as a Vite project; set **Root Directory** to `booking-app`
-- **Nginx**: see [booking-app/README.md](./booking-app/README.md#nginx)
-- **Object storage (OSS / S3)**: enable static website hosting
+| Repo | Role |
+|------|------|
+| **premium-seat-booking-app** (this repo) | Consumer app (C-side) |
+| [premium-seat-merchant-app](https://github.com/QingMXL/premium-seat-merchant-app) | Merchant console (B-side): confirm bookings, check-in, tables & dishes |
+| [premium-seat-service](https://github.com/QingMXL/premium-seat-service) | Unified FastAPI service layer |
 
 ## 📄 License
 
-For learning and prototype demo purposes.
-
----
-
-<p align="center"><sub>Made with care · every meal worth waiting for</sub></p>
+MIT © 2026
