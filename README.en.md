@@ -20,12 +20,13 @@
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/app-home.png" width="24%" alt="Home · Discover" />
-  <img src="screenshots/app-restaurant.png" width="24%" alt="Restaurant detail · Menu-style dishes" />
-  <img src="screenshots/app-booking.png" width="24%" alt="Booking · Floor-plan seat picker" />
-  <img src="screenshots/app-orders.png" width="24%" alt="My orders · Check-in QR" />
+  <img src="screenshots/app-home.png" width="19%" alt="Home · Discover" />
+  <img src="screenshots/app-restaurant.png" width="19%" alt="Restaurant detail · Menu-style dishes" />
+  <img src="screenshots/app-booking.png" width="19%" alt="Booking · Floor-plan seat picker" />
+  <img src="screenshots/app-share.png" width="19%" alt="Share booking with friends" />
+  <img src="screenshots/app-profile.png" width="19%" alt="Profile · Membership & points" />
 </p>
-<p align="center"><sub>Home · Restaurant detail · Floor-plan seat picker · My orders (live data from Supabase)</sub></p>
+<p align="center"><sub>Home · Restaurant detail · Floor-plan seat picker · Share with friends · Profile (live data from Supabase)</sub></p>
 
 ## 🌟 About
 

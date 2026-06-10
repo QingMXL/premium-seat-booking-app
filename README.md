@@ -20,12 +20,13 @@
 ## 📱 界面预览
 
 <p align="center">
-  <img src="screenshots/app-home.png" width="24%" alt="首页 · 发现餐厅" />
-  <img src="screenshots/app-restaurant.png" width="24%" alt="餐厅详情 · 菜单风招牌菜" />
-  <img src="screenshots/app-booking.png" width="24%" alt="预订 · 平面图选座" />
-  <img src="screenshots/app-orders.png" width="24%" alt="我的订单 · 核销码" />
+  <img src="screenshots/app-home.png" width="19%" alt="首页 · 发现餐厅" />
+  <img src="screenshots/app-restaurant.png" width="19%" alt="餐厅详情 · 菜单风招牌菜" />
+  <img src="screenshots/app-booking.png" width="19%" alt="预订 · 平面图选座" />
+  <img src="screenshots/app-share.png" width="19%" alt="订单分享 · 邀好友共聚" />
+  <img src="screenshots/app-profile.png" width="19%" alt="个人主页 · 会员与积分" />
 </p>
-<p align="center"><sub>首页 · 餐厅详情 · 平面图选座 · 我的订单（数据实时来自 Supabase）</sub></p>
+<p align="center"><sub>首页 · 餐厅详情 · 平面图选座 · 订单分享给好友 · 个人主页（数据实时来自 Supabase）</sub></p>
 
 ## 🌟 项目简介
 
